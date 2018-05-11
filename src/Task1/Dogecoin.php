@@ -8,7 +8,7 @@ class Dogecoin implements Currency
 	private $price;
 	private $logo_url;
 	
-	public function __construct($price)
+	public function __construct($price = 0)
 	{
 		$this->price = $price;
 		$this->name = 'Dogecoin';

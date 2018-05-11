@@ -7,6 +7,20 @@ use Cryptocurrency\Task3\MarketHtmlPresenter;
 
 // Fill in your market with currencies and use your presenter to show data here:
 $market = new CoinMarket();
+
+$coins = [
+	['class' => \Cryptocurrency\Task1\Bitcoin::class, 'price' => 6000],
+	['class' => \Cryptocurrency\Task1\Ethereum::class, 'price' => 500],
+	['class' => \Cryptocurrency\Task1\Dogecoin::class, 'price' => 0.003000]
+];
+
+foreach ($coins as $coin) {
+	$class = $coin['class'];
+	$price = $coin['price'];
+	$currency = new $class($price);
+	$market->addCurrency($currency);
+}
+
 $marketPresenter = new MarketHtmlPresenter();
 $presentation = $marketPresenter->present($market);
 

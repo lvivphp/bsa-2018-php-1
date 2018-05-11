@@ -9,14 +9,14 @@ class CoinMarket
 	
     public function addCurrency(Currency $currency): void
     {
-        $this->currencies = $currency;
-		$max_price = $currency->getDailyPrice()
+        $this->currencies[] = $currency;
+		$max_price = $currency->getDailyPrice();
         $this->max_price = $max_price > $this->max_price ? $max_price : $this->max_price;
     }
 
     public function maxPrice(): float
     {
-		return $max_price;
+		return $this->max_price;
     }
 
     public function getCurrencies(): array
